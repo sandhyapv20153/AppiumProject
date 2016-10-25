@@ -23,7 +23,7 @@ public class AppiumDriverBuilder {
 		    System.out.println(basePath);
 		    String relativePath = basePath.concat("\\src\\main\\resources");
 		   		    
-			appPath = new File(relativePath, "bookMyShow-ucb.apk");
+			appPath = new File(relativePath, "##Native App APK##");
 			cap = new DesiredCapabilities();
 			cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator"); // setting the emulator
