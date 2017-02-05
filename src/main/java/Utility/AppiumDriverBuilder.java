@@ -23,7 +23,7 @@ public class AppiumDriverBuilder {
 		    System.out.println(basePath);
 		    String relativePath = basePath.concat("\\src\\main\\resources");
 		   		    
-			appPath = new File(relativePath, "##Native App APK##");
+			appPath = new File(relativePath, "ApiDemos-debug.apk");
 			cap = new DesiredCapabilities();
 			cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator"); // setting the emulator
