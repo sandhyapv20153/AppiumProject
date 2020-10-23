@@ -1,43 +1,38 @@
 package scenarios;
 
-import static org.junit.Assert.*;
-
-
-import java.net.MalformedURLException;
 import java.util.Iterator;
 import java.util.List;
 
 import org.junit.*;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import Utility.*;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidKeyCode;
+//import io.appium.java_client.android.AndroidKeyCode;
 import pageobjects.*;
-import setup.TestSetUp;
 
-public class APIDemosButtonTestCase extends TestSetUp{
+
+public class APIDemosButtonTestCase{
 	
-	AndroidDriver driver;
-	WebElement element;
+	AndroidDriverNativeAppInitialization initObj;
+	AndroidDriver androidDriver;
 	
 	@Before
 	public void beforeClass()
 	{
-	
-		driver = driverNativeAppTestSetup();
-
 	}
 
 	@Test
 	public void buttonTest() {
 
-		try {
-			APIDemosHomePagePO homePage= new APIDemosHomePagePO(driver);
-			APIDemosViewPagePO viewPage= new APIDemosViewPagePO(driver);
-			APIDemosButtonsPagePO buttonPage= new APIDemosButtonsPagePO(driver);
+		initObj = new AndroidDriverNativeAppInitialization();
+		androidDriver = initObj.getDriverValue();
+	  	System.out.println("After initialization.....");
+		
+			APIDemosHomePagePO homePage= new APIDemosHomePagePO(androidDriver);
+			APIDemosViewPagePO viewPage= new APIDemosViewPagePO(androidDriver);
+			APIDemosButtonsPagePO buttonPage= new APIDemosButtonsPagePO(androidDriver);
 
-			Utilities util = new Utilities(driver);	
+			Utilities util = new Utilities(androidDriver);	
 			
 			List viewPageList;
 			Iterator viewPageListIterator;
@@ -63,22 +58,21 @@ public class APIDemosButtonTestCase extends TestSetUp{
 			util.waitUntilElementPresent(buttonPage.getOffButtonLocator(), "OFF");
 			buttonPage.getOffButtonLocator().click();
 			
-			util.deviceBack();
-			util.deviceBack();
-			driver.closeApp();
+			//util.deviceBack();
+			//util.deviceBack();
+			
+			androidDriver.closeApp();
+			initObj.closeApp();
 			
 			
-		
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			
+
 	}
 	
 	@After
 	public void afterClass()
 	{
-		
+	
 	}
 
 }

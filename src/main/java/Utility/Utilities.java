@@ -8,22 +8,22 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.SwipeElementDirection;
+//import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidKeyCode;
+//import io.appium.java_client.android.AndroidKeyCode;
 
 public class Utilities {
 	private AndroidDriver driver;
 	private WebElement element;
 	
-	public Utilities(AndroidDriver driver) throws MalformedURLException
+	public Utilities(AndroidDriver driver)
 	{
 		this.driver = driver;
 	}
 	
 	public void waitUntilElementClickable(WebElement elem)
 	{
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.elementToBeClickable(elem));
 	}
 	
@@ -34,7 +34,7 @@ public class Utilities {
 		wait.until(ExpectedConditions.textToBePresentInElement(elem, str));
 	}
 	
-	public void deviceBack()
+	/*public void deviceBack()
 	{
 		driver.pressKeyCode(AndroidKeyCode.BACK);
 	}
@@ -44,7 +44,7 @@ public class Utilities {
 		//swiping - swiping in milliseconds ie., 3000 = 2milli seconds
 		MobileElement SwipeElement = (MobileElement)driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Kochi']"));
 		SwipeElement.swipe(SwipeElementDirection.UP, 3000);
-	}
+	}*/
 	
 	
 

@@ -1,13 +1,7 @@
 package pageobjects;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import Utility.AppiumDriverBuilder;
 import io.appium.java_client.android.AndroidDriver;
 
 public class APIDemosHomePagePO {
@@ -15,7 +9,7 @@ public class APIDemosHomePagePO {
 	private WebElement elem;
 	private AndroidDriver driver;
 	
-	public APIDemosHomePagePO(AndroidDriver driver) throws MalformedURLException
+	public APIDemosHomePagePO(AndroidDriver driver)
 	{
 		this.driver = driver;
 	}
