@@ -2,6 +2,7 @@ package scenarios;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.*;
 import org.openqa.selenium.WebElement;
@@ -15,24 +16,30 @@ public class APIDemosButtonTestCase{
 	
 	AndroidDriverNativeAppInitialization initObj;
 	AndroidDriver androidDriver;
+	APIDemosHomePagePO homePage;
+	APIDemosViewPagePO viewPage;
+	APIDemosButtonsPagePO buttonPage;
+	Utilities util;
 	
 	@Before
 	public void beforeClass()
 	{
+		initObj = new AndroidDriverNativeAppInitialization();
+		androidDriver = initObj.getDriverValue();
+		androidDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	  	System.out.println("After initialization.....");
+		
+		homePage= new APIDemosHomePagePO(androidDriver);
+		viewPage= new APIDemosViewPagePO(androidDriver);
+		buttonPage= new APIDemosButtonsPagePO(androidDriver);
+
+		util = new Utilities(androidDriver);	
 	}
+	
 
 	@Test
 	public void buttonTest() {
 
-		initObj = new AndroidDriverNativeAppInitialization();
-		androidDriver = initObj.getDriverValue();
-	  	System.out.println("After initialization.....");
-		
-			APIDemosHomePagePO homePage= new APIDemosHomePagePO(androidDriver);
-			APIDemosViewPagePO viewPage= new APIDemosViewPagePO(androidDriver);
-			APIDemosButtonsPagePO buttonPage= new APIDemosButtonsPagePO(androidDriver);
-
-			Utilities util = new Utilities(androidDriver);	
 			
 			List viewPageList;
 			Iterator viewPageListIterator;
@@ -58,13 +65,9 @@ public class APIDemosButtonTestCase{
 			util.waitUntilElementPresent(buttonPage.getOffButtonLocator(), "OFF");
 			buttonPage.getOffButtonLocator().click();
 			
-			//util.deviceBack();
-			//util.deviceBack();
-			
-			androidDriver.closeApp();
-			initObj.closeApp();
-			
-			
+		
+			util.deviceBack();
+			util.deviceBack();
 			
 
 	}
@@ -72,6 +75,8 @@ public class APIDemosButtonTestCase{
 	@After
 	public void afterClass()
 	{
+		androidDriver.closeApp();
+		initObj.closeApp();
 	
 	}
 
