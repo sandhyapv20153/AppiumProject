@@ -22,6 +22,10 @@ public class APIDemosViewPagePO {
 		return list;
 	}
 	
+	public WebElement getGalaryLocator(){
+		elem = driver.findElement(By.xpath("//android.widget.TextView[@text='Gallery']"));
+		return elem;
+	}
 		
 }
 
