@@ -26,6 +26,16 @@ public class APIDemosViewPagePO {
 		elem = driver.findElement(By.xpath("//android.widget.TextView[@text='Gallery']"));
 		return elem;
 	}
+	
+	public WebElement getVisibilityLocator(){
+		elem = driver.findElement(By.xpath("//android.widget.TextView[@text='Visibility']"));
+		return elem;
+	}
+	
+	
+	public void scrollToVisibilityLocator(){
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Visibility\"));");
+	}
 		
 }
 
