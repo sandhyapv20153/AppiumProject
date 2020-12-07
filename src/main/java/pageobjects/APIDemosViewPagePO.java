@@ -32,6 +32,11 @@ public class APIDemosViewPagePO {
 		return elem;
 	}
 	
+	public WebElement getDragDropLocator(){
+		elem = driver.findElement(By.xpath("//android.widget.TextView[@text='Drag and Drop']"));
+		return elem;
+	}
+	
 	
 	public void scrollToVisibilityLocator(){
 		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Visibility\"));");
