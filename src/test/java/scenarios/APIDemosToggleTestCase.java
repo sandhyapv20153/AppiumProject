@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 
 import Utility.AndroidDriverNativeAppInitialization;
@@ -19,16 +20,18 @@ import static io.appium.java_client.touch.offset.ElementOption.element;
 import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
 import static java.time.Duration.ofSeconds;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.offset.PointOption;
 import junit.framework.Assert;
 import pageobjects.*;
 
 
-public class APIDemosScrollTestCase {
+public class APIDemosToggleTestCase {
 
 	AndroidDriverNativeAppInitialization initObj;
 	AndroidDriver androidDriver;
 	APIDemosHomePagePO homePage;
 	APIDemosViewPagePO viewPage;
+	APIDemosSwitchesPagePO switchesPage;
 	TouchAction tAction;
 	Utilities util;
 	
@@ -42,23 +45,36 @@ public class APIDemosScrollTestCase {
 		
 		homePage= new APIDemosHomePagePO(androidDriver);
 		viewPage= new APIDemosViewPagePO(androidDriver);
+		switchesPage = new APIDemosSwitchesPagePO(androidDriver);
 		
 		tAction = new TouchAction(androidDriver);
 
 		util = new Utilities(androidDriver);	
 	}
 	
+	
 	@Test
-	public void ScrollTest() {
+	public void ToggleTest() {
 
 			
 			util.waitUntilElementClickable(homePage.getViewsLocator());
 			homePage.getViewsLocator().click();
 			
-			util.waitUntilElementClickable(viewPage.getGalaryLocator());
-			viewPage.scrollToVisibilityLocator();
-			viewPage.getVisibilityLocator().click();
+			viewPage.scrollToSwitchesLocator();
+			viewPage.getSwitchesLocator().click();
 			
+			switchesPage.getMonitoredSwitchLocator().click();
+			switchesPage.getDefaultSwitchLocator().click();
+			switchesPage.getMonitoredSwitchLocator().click();
+			switchesPage.getDefaultSwitchLocator().click();
+			
+			/*Point point1=switchesPage.getStandaloneSwitchLocator().getLocation();
+			System.out.println(point1.x);
+			System.out.println(point1.y);
+			tAction.tap(PointOption.point(point1.x, point1.y)).perform();*/
+
+			util.deviceBack();
+			util.deviceBack();
 			util.deviceBack();
 	
 	}

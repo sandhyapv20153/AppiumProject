@@ -37,6 +37,16 @@ public class APIDemosViewPagePO {
 		return elem;
 	}
 	
+	public WebElement getSwitchesLocator(){
+		elem = driver.findElement(By.xpath("//android.widget.TextView[@text='Switches']"));
+		return elem;
+	}
+	
+	public WebElement scrollToSwitchesLocator(){
+		elem = driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Switches\"));");
+		return elem;
+	}
+	
 	
 	public void scrollToVisibilityLocator(){
 		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Visibility\"));");
